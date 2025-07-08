@@ -1,6 +1,6 @@
-// src/components/LessonList.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // 👈 لا تنسي تستوردينه
 
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
@@ -17,7 +17,9 @@ const LessonList = () => {
       <ul>
         {lessons.map(lesson => (
           <li key={lesson.id}>
-            <h3>{lesson.title}</h3>
+            <h3>
+              <Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link>
+            </h3>
             <p>{lesson.description}</p>
             {lesson.video_url && (
               <iframe
