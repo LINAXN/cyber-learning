@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // 👈 لا تنسي تستوردينه
-
+import { Link } from 'react-router-dom';
+import Header from './Header'; // Assuming you have a Header component
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
 
@@ -12,6 +12,8 @@ const LessonList = () => {
   }, []);
 
   return (
+    <>
+    <Header/> 
     <div className="lessons">
       <h2>📘 Cybersecurity Lessons</h2>
       <ul>
@@ -20,22 +22,11 @@ const LessonList = () => {
             <h3>
               <Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link>
             </h3>
-            <p>{lesson.description}</p>
-            {lesson.video_url && (
-              <iframe
-                width="300"
-                height="200"
-                src={lesson.video_url}
-                title={lesson.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            )}
           </li>
         ))}
       </ul>
     </div>
+    </>
   );
 };
 
