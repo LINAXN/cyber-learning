@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Header from './Header'; // Assuming you have a Header component
+import Header from './Header';
+import './LessonList.css';
+
+
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
 
@@ -13,19 +16,19 @@ const LessonList = () => {
 
   return (
     <>
-    <Header/> 
-    <div className="lessons">
-      <h2>📘 Cybersecurity Lessons</h2>
-      <ul>
-        {lessons.map(lesson => (
-          <li key={lesson.id}>
-            <h3>
-              <Link to={`/lessons/${lesson.id}`}>{lesson.title}</Link>
-            </h3>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Header />
+      <div className="courses-section">
+        <h2 className="section-title">📘 Cybersecurity Lessons</h2>
+        <div className="courses-grid">
+          {lessons.map(lesson => (
+            <div key={lesson.id} className="course-card">
+              <h3>{lesson.title}</h3>
+              <p>{lesson.description || "Learn more about this topic."}</p>
+              <Link to={`/lessons/${lesson.id}`} className="btn">View Lesson</Link>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
