@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import './LessonList.css';
 import phishingImg from '../assets/images/phishing.jpeg';
-import malwareImg from '../assets/images/Social-Engineering.png';
-import passwordImg from '../assets/images/malware.jpg';
+import SocialImg from '../assets/images/Social-Engineering.png';
+import passwordImg from '../assets/images/password.jpg';
+import sqlImg from '../assets/images/sql.jpg';
+import malwareImg from '../assets/images/malware.jpg';
+
 // import defaultImg from './assets/default.jpg';
 
 const LessonList = () => {
@@ -20,7 +23,9 @@ const LessonList = () => {
     const images = {
     1: phishingImg,
     2: malwareImg,
-    3: passwordImg
+    3: SocialImg,
+    4: passwordImg,
+    5: sqlImg,
   };
 
   return (
