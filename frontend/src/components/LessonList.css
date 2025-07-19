@@ -23,7 +23,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +36,7 @@
 }
 
 .course-card h3 {
-    color: #007bff;
+    color: #5745de;
     margin-bottom: 10px;
 }
 
@@ -58,11 +58,11 @@
 }
 
 .btn:hover {
-    background: #0056b3;
+    background: #3286e0;
 }
 
 .course-img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
 }
