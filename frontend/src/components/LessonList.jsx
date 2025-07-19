@@ -3,7 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import './LessonList.css';
-
+import phishingImg from '../assets/images/phishing.jpeg';
+import malwareImg from '../assets/images/Social-Engineering.png';
+import passwordImg from '../assets/images/malware.jpg';
+// import defaultImg from './assets/default.jpg';
 
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
@@ -14,21 +17,34 @@ const LessonList = () => {
       .catch(error => console.error('Error fetching lessons:', error));
   }, []);
 
+    const images = {
+    1: phishingImg,
+    2: malwareImg,
+    3: passwordImg
+  };
+
   return (
     <>
       <Header />
-      <div className="courses-section">
-        <h2 className="section-title">📘 Cybersecurity Lessons</h2>
-        <div className="courses-grid">
-          {lessons.map(lesson => (
-            <div key={lesson.id} className="course-card">
-              <h3>{lesson.title}</h3>
-              <p>{lesson.description || "Learn more about this topic."}</p>
-              <Link to={`/lessons/${lesson.id}`} className="btn">View Lesson</Link>
-            </div>
-          ))}
-        </div>
+        <div className="courses-section">
+      <h2 className="section-title">📘 Cybersecurity Lessons</h2>
+      <div className="courses-grid">
+        {lessons.map(lesson => (
+          <div className="course-card" key={lesson.id}>
+            <img 
+  src={images[lesson.id] || '/default-course.jpg'} 
+  alt={lesson.title} 
+  className="course-img" 
+/>
+
+            <h3>{lesson.title}</h3>
+            <Link to={`/lessons/${lesson.id}`} className="btn">
+              View Lesson
+            </Link>
+          </div>
+        ))}
       </div>
+    </div>
     </>
   );
 };
