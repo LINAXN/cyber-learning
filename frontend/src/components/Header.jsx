@@ -52,8 +52,8 @@ const LessonHeader = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>Cybersecurity Lessons</h1>
-          <p style={{ fontSize: '1.25rem' }}>Explore modern cyber topics visually</p>
+          <h1 style={{ fontSize: '5.5rem', fontWeight: 'bold' }}>Cybersecurity </h1>
+          <p style={{ fontSize: '0.70cm' }}>Explore modern cyber topics visually</p>
         </div>
       </div>
     </div>

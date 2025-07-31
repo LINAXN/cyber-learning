@@ -8,6 +8,7 @@ import SocialImg from '../assets/images/Social-Engineering.png';
 import passwordImg from '../assets/images/password.jpg';
 import sqlImg from '../assets/images/sql.jpg';
 import malwareImg from '../assets/images/malware.jpg';
+import CyberImg from '../assets/images/cybersecurity.png';
 
 // import defaultImg from './assets/default.jpg';
 
@@ -26,13 +27,14 @@ const LessonList = () => {
     3: SocialImg,
     4: passwordImg,
     5: sqlImg,
+    6: CyberImg,
   };
 
   return (
     <>
       <Header />
         <div className="courses-section">
-      <h2 className="section-title">📘 Cybersecurity Lessons</h2>
+      <h2 className="section-title"> Cybersecurity Lessons</h2>
       <div className="courses-grid">
         {lessons.map(lesson => (
           <div className="course-card" key={lesson.id}>
