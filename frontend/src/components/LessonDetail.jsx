@@ -20,7 +20,13 @@ function LessonDetail() {
   
 
   return (
-    <div className="lesson-detail" style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+    <div  style={{   minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      padding: '20px',
+      maxWidth: '800px',
+      margin: '0 auto' }}>
       <h1 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>
         📘 {lesson.title}
       </h1>
@@ -29,7 +35,7 @@ function LessonDetail() {
         <div style={{ marginBottom: '20px' }}>
           <iframe
             width="100%"
-            height="400"
+            height="450"
             src={lesson.video_url}
             title={lesson.title}
             frameBorder="0"
@@ -39,25 +45,22 @@ function LessonDetail() {
       )}
 
       <div style={{ marginBottom: '20px' }}>
-        <h2>📝 Description</h2>
+        <h2>Description</h2>
         <p>{lesson.description}</p>
       </div>
 
       <div style={{ backgroundColor: '#d5a4f1ff', padding: '15px', borderRadius: '8px', marginBottom: '30px' }}>
-        <h2>💡 Example</h2>
+        <h2> Example</h2>
         <pre style={{ whiteSpace: 'pre-wrap' }}>{lesson.example}</pre>
       </div>
-  {/* زر للذهاب للكويز، إذا فيه كويز */}
-      {lesson.quizzes.length > 0 && (
-        <Link to={`/quiz/${lesson.id}`} state={{ quiz: lesson.quizzes[0] }}>
-          <button className="bg-purple-600 text-white px-4 py-2 mt-4 rounded" style={{ textAlign: 'center' }}>
-            Start Quiz 🚀
-          </button>
-        </Link>
-      )}
-      {lesson.quizzes.length === 0 && (
-        <p>No quizzes available for this lesson.</p>
-      )}
+
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+  <Link to={`/quiz/${lesson.id}`} state={{ quiz: lesson.quizzes[0] }}>
+    <button className="bg-purple-600 text-white px-6 py-3 rounded-xl text-lg hover:bg-purple-700 transition duration-300">
+      Start Quiz 
+    </button>
+  </Link>
+</div>
     </div>
   );
 }

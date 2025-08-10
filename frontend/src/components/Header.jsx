@@ -4,7 +4,7 @@ import cyberVideo from '../assets/videos/cyberheader.mp4';
 const LessonHeader = () => {
   return (
     <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-      {/* 🎥 خلفية الفيديو */}
+
       <video
        autoPlay
     muted
@@ -16,7 +16,7 @@ const LessonHeader = () => {
       left: 0,
       width: '100%',
       height: '100%',
-      objectFit: 'cover',  // عشان تكون الصورة أو الفيديو يغطي الشاشة بالكامل
+      objectFit: 'cover',  
       zIndex: 0,
         }}
       >
@@ -24,7 +24,6 @@ const LessonHeader = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* 🌓 تظليل خفيف فوق الفيديو (اختياري) */}
       <div
         style={{
           position: 'absolute',
@@ -37,7 +36,7 @@ const LessonHeader = () => {
         }}
       ></div>
 
-      {/* ✅ المحتوى في المنتصف تمامًا */}
+     
       <div
         style={{
           position: 'relative',

@@ -12,7 +12,7 @@ function QuizPage() {
   if (!quiz) {
     return (
       <div className="p-6 text-center min-h-screen flex flex-col justify-center items-center bg-gray-50">
-        <p className="text-red-500 text-lg font-semibold mb-4">❌ Quiz not found.</p>
+        <p className="text-red-500 text-lg font-semibold mb-4">Quiz not found.</p>
         <button
           onClick={() => navigate(-1)}
           className="mt-4 bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700 transition"
@@ -43,8 +43,8 @@ function QuizPage() {
 
   const handleSubmit = () => {
     console.log("User answers:", answers);
-    alert("✅ Quiz submitted!");
-    navigate(-1); // ترجع لصفحة الدرس أو أي مكان تحبه
+    alert("Quiz submitted!");
+    navigate(-1)
   };
 
   return (
@@ -78,7 +78,7 @@ function QuizPage() {
           </div>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center mt-6">
           <button
             onClick={goPrev}
             disabled={currentIndex === 0}
