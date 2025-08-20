@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import './QuizPage.css';
 
 function QuizPage() {
   const location = useLocation();
@@ -11,14 +12,17 @@ function QuizPage() {
 
   if (!quiz) {
     return (
-      <div className="p-6 text-center min-h-screen flex flex-col justify-center items-center bg-gray-50">
-        <p className="text-red-500 text-lg font-semibold mb-4">Quiz not found.</p>
-        <button
-          onClick={() => navigate(-1)}
-          className="mt-4 bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700 transition"
-        >
-          Go Back
-        </button>
+      <div className="error-container">
+        <div className="error-card">
+          <div className="error-icon">⚠️</div>
+          <p className="error-text">لم يتم العثور على الاختبار</p>
+          <button
+            onClick={() => navigate(-1)}
+            className="error-button"
+          >
+            العودة
+          </button>
+        </div>
       </div>
     );
   }
@@ -43,26 +47,30 @@ function QuizPage() {
 
   const handleSubmit = () => {
     console.log("User answers:", answers);
-    alert("Quiz submitted!");
-    navigate(-1)
+    alert("تم تقديم الاختبار!");
+    navigate(-1);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-purple-300 flex justify-center items-center px-4 py-12">
-      <div className="bg-white shadow-xl rounded-2xl max-w-xl w-full p-8">
-        <h2 className="text-2xl font-extrabold mb-6 text-purple-800 text-center">
-          {quiz.title}
-        </h2>
-
-        <div className="border border-purple-300 rounded-lg p-6 mb-6 shadow hover:shadow-lg transition">
-          <p className="font-semibold mb-4 text-lg text-purple-700">
-            {currentIndex + 1}. {question.text}
-          </p>
-          <div className="space-y-4">
+    <div className="quiz-container">
+      <div className="quiz-card">
+        <div className="quiz-header">
+          <h2 className="quiz-title">{quiz.title}</h2>
+          <p className="quiz-progress">سؤال {currentIndex + 1} من {quiz.questions.length}</p>
+        </div>
+        
+        <div className="quiz-content">
+          <div className="question-container">
+            <p className="question-text">
+              {currentIndex + 1}. {question.text}
+            </p>
+          </div>
+          
+          <div className="answers-container">
             {question.answers.map(ans => (
               <label
                 key={ans.id}
-                className="flex items-center cursor-pointer space-x-3 text-gray-800 hover:text-purple-700 transition"
+                className={`answer-label ${answers[question.id] === ans.id ? 'selected' : ''}`}
               >
                 <input
                   type="radio"
@@ -70,43 +78,40 @@ function QuizPage() {
                   value={ans.id}
                   checked={answers[question.id] === ans.id}
                   onChange={() => handleAnswer(question.id, ans.id)}
-                  className="form-radio text-purple-600 focus:ring-purple-500"
+                  className="answer-input"
                 />
-                <span>{ans.text}</span>
+                <span className="answer-text">{ans.text}</span>
               </label>
             ))}
           </div>
-        </div>
 
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={goPrev}
-            disabled={currentIndex === 0}
-            className={`px-6 py-2 rounded-xl font-semibold text-white transition 
-              ${currentIndex === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-700 hover:bg-purple-800'}`}
-          >
-            Previous
-          </button>
+          <div className="quiz-buttons">
+            <button
+              onClick={goPrev}
+              disabled={currentIndex === 0}
+              className="quiz-button prev"
+            >
+              السابق
+            </button>
 
-          {currentIndex < quiz.questions.length - 1 ? (
-            <button
-              onClick={goNext}
-              disabled={!answers[question.id]}
-              className={`px-6 py-2 rounded-xl font-semibold text-white transition 
-                ${!answers[question.id] ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-700 hover:bg-purple-800'}`}
-            >
-              Next
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              disabled={!answers[question.id]}
-              className={`px-6 py-2 rounded-xl font-bold text-white transition shadow-lg
-                ${!answers[question.id] ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-700 hover:bg-purple-800'}`}
-            >
-              Submit
-            </button>
-          )}
+            {currentIndex < quiz.questions.length - 1 ? (
+              <button
+                onClick={goNext}
+                disabled={!answers[question.id]}
+                className="quiz-button next"
+              >
+                التالي
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={!answers[question.id]}
+                className="quiz-button submit"
+              >
+                إنهاء الاختبار
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
